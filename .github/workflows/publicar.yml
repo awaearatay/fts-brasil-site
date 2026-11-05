@@ -2,7 +2,6 @@ name: Publicar FTS Brasil
 on:
   push:
     branches: [main]
-    paths-ignore: ['site/**']
   workflow_dispatch:
 permissions:
   contents: write
