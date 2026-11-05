@@ -18,6 +18,9 @@ for p in root.rglob("*.html"):
         tag=match.group(0)
         if re.search(r'aria-label=["\']FTS Brasil["\']',tag,re.I):
             return re.sub(r'href=(["\']).*?\1','href="'+home+'"',tag,count=1,flags=re.I)
+        if re.search(r'aria-label=["\']Facebook FTS Brasil["\']',tag,re.I):
+            tag=re.sub(r'\s+(?:target|rel|referrerpolicy)=(["\']).*?\1',"",tag,flags=re.I)
+            return tag[:-1]+' target="_self" rel="noreferrer" referrerpolicy="no-referrer">'
         return tag
     text=re.sub(r'<a\b[^>]*>',logo,text,flags=re.I)
     if text!=old:
