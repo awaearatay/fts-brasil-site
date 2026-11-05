@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./sitemap-stylesheet.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>./post-3/index.html</loc>
+    <lastmod>2026-03-02T19:46:44+00:00</lastmod>
+    <image:image>
+      <image:loc>./wp-content/uploads/2026/03/aerial-photography-of-airliner-rf6ywhvkrly.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>./post-2/index.html</loc>
+    <lastmod>2026-03-02T19:46:44+00:00</lastmod>
+    <image:image>
+      <image:loc>./wp-content/uploads/2026/03/gray-and-white-airplane-on-flight-near-clear-blue-sky-prdntrirg8w.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>./post-1/index.html</loc>
+    <lastmod>2026-03-02T19:46:44+00:00</lastmod>
+    <image:image>
+      <image:loc>./wp-content/uploads/2026/03/air-canada-airline-x-mor6oa4-k.jpeg</image:loc>
+    </image:image>
+  </url>
+</urlset>
