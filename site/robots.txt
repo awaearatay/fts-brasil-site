@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://awaearatay.github.io/fts-brasil-site/sitemap.xml
