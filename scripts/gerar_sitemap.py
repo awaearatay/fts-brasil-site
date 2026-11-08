@@ -14,6 +14,13 @@ for f in ('post-type-page-sitemap-1.xml', 'post-type-post-sitemap-1.xml'):
         slug = loc.removesuffix('index.html').strip('/')
         if (root / slug / 'index.html').is_file() or (slug == '' and (root / 'index.html').is_file()):
             urls[slug] = lm[:10]
+# páginas novas (fora da lista antiga do WordPress): entram automaticamente, com a data de hoje
+SKIP = ('wp-content', 'wp-includes', 'form', 'author', 'category', 'img', 'feed', 'comments')
+for p in root.rglob('index.html'):
+    slug = p.parent.relative_to(root).as_posix()
+    slug = '' if slug == '.' else slug
+    if slug.split('/')[0] in SKIP or slug in urls: continue
+    urls[slug] = date.today().isoformat()
 urls.update({k: v for k, v in EXTRA.items() if k in urls})
 def prio(slug):
     if slug == '': return '1.0'
