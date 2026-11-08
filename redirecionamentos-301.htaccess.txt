@@ -1,0 +1,17 @@
+# Redirecionamentos 301 (endereços antigos -> novos) para o WordPress/Hostinger.
+# Use SOMENTE quando trocar os slugs das páginas no WordPress.
+# Cole no início do arquivo .htaccess (antes de "# BEGIN WordPress").
+# Ao trocar o slug da página-mãe "produtos-para-aviacao" para "catalogo-pecas-aviacao",
+# as páginas filhas já passam a usar o novo prefixo.
+
+RedirectMatch 301 ^/produtos-para-aviacao/?$ /catalogo-pecas-aviacao/
+RedirectMatch 301 ^/produtos-para-aviacao/(.+)$ /catalogo-pecas-aviacao/$1
+RedirectMatch 301 ^/valvulas/?$ /catalogo-valvulas/
+RedirectMatch 301 ^/sensores/?$ /catalogo-sensores/
+RedirectMatch 301 ^/1175-2/?$ /meio-ambiente/
+
+# Novos slugs no WordPress (Páginas > Edição rápida > Link):
+#   produtos-para-aviacao -> catalogo-pecas-aviacao   (filhas mantêm o nome: medidores, sistema-deadman...)
+#   valvulas              -> catalogo-valvulas
+#   sensores              -> catalogo-sensores
+#   1175-2                -> meio-ambiente

@@ -1,12 +1,12 @@
 """Gera site/sitemap.xml e site/robots.txt com URLs absolutas.
 Uso: python scripts/gerar_sitemap.py [URL_BASE]
-Quando o site tiver domínio definitivo, rode com ele, ex.: python scripts/gerar_sitemap.py https://www.ftsbrasil.com.br"""
+Para outro domínio: python scripts/gerar_sitemap.py https://outrodominio.com.br"""
 import re, sys
 from datetime import date
 from pathlib import Path
-BASE = (sys.argv[1] if len(sys.argv) > 1 else 'https://awaearatay.github.io/fts-brasil-site').rstrip('/')
+BASE = (sys.argv[1] if len(sys.argv) > 1 else 'https://www.ftsbrasil.com.br').rstrip('/')
 root = Path('site')
-EXTRA = {'produtos-para-aviacao/sistema-deadman': date.today().isoformat()}  # páginas alteradas depois da exportação
+EXTRA = {'catalogo-pecas-aviacao/sistema-deadman': date.today().isoformat()}  # páginas alteradas depois da exportação
 urls = {}
 for f in ('post-type-page-sitemap-1.xml', 'post-type-post-sitemap-1.xml'):
     xml = (root / f).read_text(encoding='utf-8')
@@ -17,8 +17,8 @@ for f in ('post-type-page-sitemap-1.xml', 'post-type-post-sitemap-1.xml'):
 urls.update({k: v for k, v in EXTRA.items() if k in urls})
 def prio(slug):
     if slug == '': return '1.0'
-    if slug == 'produtos-para-aviacao': return '0.9'
-    if slug.startswith('produtos-para-aviacao/'): return '0.8'
+    if slug == 'catalogo-pecas-aviacao': return '0.9'
+    if slug.startswith('catalogo-pecas-aviacao/'): return '0.8'
     return '0.6'
 out = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 for slug in sorted(urls, key=lambda s: (s != '', s)):
