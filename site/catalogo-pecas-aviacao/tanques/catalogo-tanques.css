@@ -1,0 +1,649 @@
+:root{ --navy:#0b1a4a; --blue:#1a56db; --muted:#6b7280; --whats:#22c55e; --whats-hover:#16a34a; --bg-soft:#f8fafc; }
+*{box-sizing:border-box}
+.fts-catalogo-embed{width:100%;margin:0;padding:40px 20px;font-family:'Space Grotesk',system-ui,sans-serif;background:#f1f5f9}
+.fts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto}
+@media(max-width:899px){.fts-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:599px){.fts-grid{grid-template-columns:1fr}}
+.fts-card{width:100%;max-width:350px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(15,23,42,.03),0 10px 28px rgba(15,23,42,.05);display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
+.fts-card:hover{transform:translateY(-4px);box-shadow:0 2px 6px rgba(15,23,42,.05),0 18px 40px rgba(15,23,42,.08)}
+.fts-card__image{padding:14px;background:#fff}
+.fts-card__image-inner{background:var(--bg-soft);border-radius:12px;overflow:hidden;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.fts-card__image-inner img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.fts-card:hover .fts-card__image-inner img{transform:scale(1.05)}
+.fts-card__body{padding:6px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.fts-card__category{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:.08em;color:var(--blue);text-transform:uppercase}
+.fts-card__title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;line-height:1.2;color:var(--navy);margin:0}
+.fts-card__desc{font-size:14.5px;line-height:1.5;color:var(--muted);margin:0 0 6px;flex:1}
+.fts-card__btn{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--whats);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:14px 18px;border-radius:10px;transition:background .2s ease;font-family:'Space Grotesk',sans-serif}
+.fts-card__btn:hover{background:var(--whats-hover)}
+.fts-card__btn svg{width:18px;height:18px;fill:#fff}
+@media(max-width:400px){.fts-card__title{font-size:20px}}
+
+
+/* ===== FERRAMENTAS DO CATÁLOGO ===== */
+.fts-catalogo-embed{--fts-border:#e2e8f0;--fts-shadow:0 10px 30px rgba(15,23,42,.07)}
+.fts-catalogo-head{max-width:1200px;margin:0 auto 28px;background:linear-gradient(135deg,#fff 0%,#f8fbff 100%);border:1px solid var(--fts-border);border-radius:22px;padding:28px;box-shadow:var(--fts-shadow);position:relative;overflow:hidden}
+.fts-catalogo-head:before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-110px;top:-150px;background:radial-gradient(circle,rgba(26,86,219,.16),rgba(26,86,219,0) 70%);pointer-events:none}
+.fts-catalogo-head__intro{position:relative;z-index:1;margin-bottom:22px}
+.fts-catalogo-head__eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.1em;color:var(--blue)}
+.fts-catalogo-head__intro h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(27px,4vw,40px);line-height:1.08;color:var(--navy);margin:6px 0 8px}
+.fts-catalogo-head__intro p{margin:0;color:var(--muted);font-size:15px}
+.fts-tools{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;position:relative;z-index:1}
+.fts-search{height:54px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #cbd5e1;border-radius:13px;padding:0 13px;box-shadow:0 2px 8px rgba(15,23,42,.04);transition:border-color .2s ease,box-shadow .2s ease}
+.fts-search:focus-within{border-color:var(--blue);box-shadow:0 0 0 4px rgba(26,86,219,.12)}
+.fts-search>svg{width:22px;height:22px;fill:var(--blue);flex:0 0 auto}
+.fts-search input{width:100%;min-width:0;border:0!important;outline:0!important;background:transparent!important;box-shadow:none!important;color:var(--navy);font:600 15px 'Space Grotesk',sans-serif;padding:0!important;margin:0!important}
+.fts-search input::placeholder{color:#94a3b8;font-weight:400}
+.fts-search__clear{width:30px;height:30px;border:0;border-radius:8px;background:#eef2f7;color:#64748b;font-size:23px;line-height:1;cursor:pointer;opacity:0;pointer-events:none;transition:.2s ease}
+.fts-search__clear.is-visible{opacity:1;pointer-events:auto}
+.fts-search__clear:hover{background:#e2e8f0;color:var(--navy)}
+.fts-tools__row{display:flex;gap:10px;align-items:stretch}
+.fts-select-wrap{display:flex;align-items:center;gap:8px;height:54px;background:#fff;border:1px solid #cbd5e1;border-radius:13px;padding:0 12px;color:#64748b;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.fts-select-wrap select{border:0!important;outline:0!important;background:transparent!important;box-shadow:none!important;color:var(--navy);font:700 14px 'Space Grotesk',sans-serif;padding:0 22px 0 0!important;margin:0!important;cursor:pointer}
+.fts-reset{height:54px;border:1px solid #cbd5e1;border-radius:13px;background:#fff;color:var(--navy);padding:0 16px;display:flex;align-items:center;justify-content:center;gap:8px;font:700 14px 'Space Grotesk',sans-serif;cursor:pointer;white-space:nowrap;transition:.2s ease}
+.fts-reset svg{width:18px;height:18px;fill:currentColor}
+.fts-reset:hover{border-color:var(--blue);color:var(--blue);background:#f8fbff}
+.fts-filter-area{position:relative;z-index:1;margin-top:20px;padding-top:18px;border-top:1px solid #e8edf4}
+.fts-filter-label{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:12px}
+.fts-filter-label>span{font-size:13px;font-weight:700;color:var(--navy)}
+.fts-filter-label strong{font-size:13px;color:var(--blue)}
+.fts-filter-chips{display:flex;gap:9px;overflow-x:auto;padding:2px 2px 8px;scrollbar-width:thin;scroll-behavior:smooth}
+.fts-chip{flex:0 0 auto;border:1px solid #dbe3ee;background:#fff;color:#475569;border-radius:999px;padding:9px 12px;font:700 12px 'Space Grotesk',sans-serif;cursor:pointer;transition:.2s ease}
+.fts-chip span{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;margin-left:5px;padding:0 6px;border-radius:999px;background:#eef2f7;color:#64748b;font-size:11px}
+.fts-chip:hover{border-color:#93b4f5;color:var(--blue);transform:translateY(-1px)}
+.fts-chip.is-active{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 7px 16px rgba(26,86,219,.22)}
+.fts-chip.is-active span{background:rgba(255,255,255,.2);color:#fff}
+.fts-card[hidden]{display:none!important}
+.fts-card.fts-enter{animation:ftsCardIn .32s ease both}
+@keyframes ftsCardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.fts-no-results{max-width:700px;margin:26px auto;text-align:center;background:#fff;border:1px dashed #b9c7da;border-radius:18px;padding:38px 22px;color:var(--muted)}
+.fts-no-results__icon{width:64px;height:64px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#eff6ff}
+.fts-no-results__icon svg{width:30px;height:30px;fill:var(--blue)}
+.fts-no-results h3{font-size:22px;color:var(--navy);margin:0 0 8px}
+.fts-no-results p{margin:0 auto 17px;max-width:480px}
+.fts-no-results__reset{border:0;border-radius:10px;background:var(--blue);color:#fff;padding:12px 16px;font:700 14px 'Space Grotesk',sans-serif;cursor:pointer}
+.fts-no-results__reset:hover{filter:brightness(.94)}
+@media(max-width:899px){
+  .fts-tools{grid-template-columns:1fr}
+  .fts-tools__row{display:grid;grid-template-columns:1fr auto}
+}
+@media(max-width:599px){
+  .fts-catalogo-embed{padding:24px 12px}
+  .fts-catalogo-head{padding:20px 15px;border-radius:17px}
+  .fts-tools__row{grid-template-columns:1fr}
+  .fts-select-wrap,.fts-reset{width:100%}
+  .fts-select-wrap select{margin-left:auto!important}
+  .fts-filter-label{align-items:flex-start;flex-direction:column;gap:4px}
+}
+
+.fts-catalogo-embed,.fts-catalogo-embed *,.fts-catalogo-embed h1,.fts-catalogo-embed h2,.fts-catalogo-embed h3,.fts-catalogo-embed h4,.fts-catalogo-embed h5,.fts-catalogo-embed h6,.fts-catalogo-embed button,.fts-catalogo-embed input,.fts-catalogo-embed select,.fts-catalogo-embed a,.fts-catalogo-embed span,.fts-catalogo-embed p{font-family:'Space Grotesk',system-ui,sans-serif!important}
+.fts-topo-catalogo{max-width:1200px;margin:0 auto 24px}.fts-topo-catalogo__hero{background:linear-gradient(135deg,#0f5ca6 0%,#0f7acb 55%,#22a6df 100%);border-radius:18px;overflow:hidden;box-shadow:0 12px 30px rgba(15,76,129,.18);position:relative}.fts-topo-catalogo__hero:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-80px;top:-125px;background:rgba(255,255,255,.08)}.fts-topo-catalogo__main{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 24px 12px;position:relative;z-index:1}.fts-topo-catalogo__main h1{margin:0;color:#fff;font-size:clamp(28px,4vw,42px);line-height:1.05;font-weight:700;letter-spacing:-.03em}.fts-topo-catalogo__cta{display:inline-flex;align-items:center;justify-content:center;min-width:184px;padding:12px 16px;border:2px solid rgba(255,255,255,.75);border-radius:12px;color:#fff;text-decoration:none;font-size:15px;line-height:1.15;font-weight:700;text-align:center;transition:.2s ease}.fts-topo-catalogo__cta:hover{background:#fff;color:#0f67b4;border-color:#fff;transform:translateY(-1px)}.fts-topo-catalogo__logos{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(7,66,126,.34);padding:10px 18px;position:relative;z-index:1}.fts-logo-box{min-height:42px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;font-weight:700;letter-spacing:.02em;border-right:1px solid rgba(255,255,255,.14)}.fts-logo-box:last-child{border-right:0}.fts-topo-catalogo__tools{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:10px;margin-top:10px}.fts-search,.fts-select-wrap{min-height:44px;background:#fff;border:1px solid #dbe3ee;border-radius:999px;box-shadow:0 5px 16px rgba(15,23,42,.06)}.fts-search{display:flex;align-items:center;gap:10px;padding:0 14px}.fts-search>svg{width:18px;height:18px;fill:#94a3b8}.fts-search input{width:100%;border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;color:#334155;font-size:14px;padding:0!important}.fts-search input::placeholder{color:#a0aec0}.fts-search__clear{width:28px;height:28px;border:0;border-radius:50%;background:#eef2f7;color:#64748b;font-size:20px;line-height:1;cursor:pointer;opacity:0;pointer-events:none}.fts-search__clear.is-visible{opacity:1;pointer-events:auto}.fts-select-wrap{display:flex;align-items:center;padding:0 14px}.fts-select-wrap select{width:100%;border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;color:#334155;font-size:13px;font-weight:600;padding:0!important;cursor:pointer}.fts-filter-area{margin-top:8px;background:#eef4fa;border-radius:14px;padding:12px 14px 10px}.fts-filter-chips{display:flex;flex-wrap:wrap;gap:7px}.fts-chip{border:1px solid #d6e0ea;background:#fff;color:#36506a;border-radius:999px;padding:8px 11px;font-size:11px;font-weight:700;cursor:pointer;transition:.2s ease}.fts-chip:hover{border-color:#1a76c8;color:#1a76c8}.fts-chip.is-active{background:#0f78c6;color:#fff;border-color:#0f78c6;box-shadow:0 5px 12px rgba(15,120,198,.22)}.fts-filter-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;font-size:12px}.fts-filter-meta strong{color:#0b1a4a}.fts-reset{border:0;background:transparent;color:#1a56db;font-size:12px;font-weight:700;cursor:pointer;padding:0}.fts-card__category{font-family:'Space Grotesk',system-ui,sans-serif!important}
+@media(max-width:699px){.fts-topo-catalogo__main{align-items:flex-start;flex-direction:column;padding:20px 18px 14px}.fts-topo-catalogo__cta{width:100%;min-width:0}.fts-topo-catalogo__logos{grid-template-columns:repeat(2,1fr);gap:8px;padding:12px}.fts-logo-box{min-height:38px;border:1px solid rgba(255,255,255,.14);border-radius:8px;background:rgba(255,255,255,.06)}.fts-topo-catalogo__tools{grid-template-columns:1fr}.fts-filter-chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.fts-chip{flex:0 0 auto}}
+
+/* ===== AJUSTE FINAL SOLICITADO ===== */
+.fts-logo-box{
+  min-height:42px;
+  padding:4px 12px;
+}
+.fts-logo-box img{
+  display:block;
+  width:auto;
+  max-width:112px;
+  height:30px;
+  object-fit:contain;
+  background:#fff;
+}
+.fts-card__body{
+  padding:10px 22px 22px;
+  gap:14px;
+  text-align:center;
+}
+.fts-card__title{
+  font-size:18px!important;
+  line-height:1.25!important;
+  min-height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.fts-card__btn{
+  margin-top:auto;
+  width:100%;
+  min-height:54px;
+}
+@media(max-width:599px){
+  .fts-logo-box img{
+    max-width:96px;
+    height:28px;
+  }
+  .fts-card__title{
+    min-height:auto;
+    font-size:17px!important;
+  }
+}
+
+/* ===== AJUSTES SOLICITADOS: imagens completas e logos maiores ===== */
+.fts-card__image-inner{
+  background:#fff!important;
+  aspect-ratio:1/1!important;
+  padding:10px!important;
+}
+.fts-card__image-inner img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+}
+.fts-card:hover .fts-card__image-inner img{
+  transform:none!important;
+}
+.fts-topo-catalogo__logos{
+  padding:8px 10px!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+}
+.fts-logo-box{
+  min-height:52px!important;
+  padding:2px 8px!important;
+}
+.fts-logo-box img{
+  width:100%!important;
+  max-width:150px!important;
+  height:42px!important;
+  object-fit:contain!important;
+}
+@media(max-width:699px){
+  .fts-logo-box{
+    min-height:46px!important;
+  }
+  .fts-logo-box img{
+    max-width:130px!important;
+    height:36px!important;
+  }
+}
+
+/* ===== AJUSTE FINAL: somente imagem, nome e botão ===== */
+.fts-card{
+  transition:transform .25s ease,box-shadow .25s ease!important;
+}
+.fts-card:hover{
+  transform:translateY(-4px)!important;
+  box-shadow:0 2px 6px rgba(15,23,42,.05),0 18px 40px rgba(15,23,42,.08)!important;
+}
+.fts-card__image{
+  padding:14px!important;
+}
+.fts-card__image-inner{
+  background:#fff!important;
+  aspect-ratio:1/1!important;
+  padding:8px!important;
+  overflow:hidden!important;
+}
+.fts-card__image-inner img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  transition:transform .4s ease!important;
+}
+.fts-card:hover .fts-card__image-inner img{
+  transform:scale(1.05)!important;
+}
+.fts-card__body{
+  padding:6px 22px 22px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:14px!important;
+  flex:1!important;
+  text-align:center!important;
+}
+.fts-card__title{
+  margin:0!important;
+  min-height:48px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.fts-card__btn{
+  margin-top:auto!important;
+}
+@media(max-width:599px){
+  .fts-card__title{
+    min-height:auto!important;
+  }
+}
+
+/* ===== AJUSTE SOLICITADO: imagens inteiras e logos ampliadas ===== */
+.fts-card__image-inner{
+  width:100%!important;
+  aspect-ratio:1/1!important;
+  padding:10px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+  background:#fff!important;
+}
+.fts-card__image-inner img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  display:block!important;
+  transform:none!important;
+}
+.fts-card:hover .fts-card__image-inner img{
+  transform:scale(1.03)!important;
+}
+
+.fts-topo-catalogo__logos{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:0!important;
+  padding:8px 14px!important;
+}
+.fts-logo-box{
+  min-height:72px!important;
+  padding:4px 20px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border-right:1px solid rgba(255,255,255,.16)!important;
+  overflow:hidden!important;
+}
+.fts-logo-box:last-child{
+  border-right:0!important;
+}
+.fts-logo-box img{
+  width:100%!important;
+  max-width:220px!important;
+  height:58px!important;
+  object-fit:contain!important;
+  display:block!important;
+  background:transparent!important;
+}
+
+@media(max-width:699px){
+  .fts-topo-catalogo__logos{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+  .fts-logo-box{
+    min-height:60px!important;
+    padding:4px 12px!important;
+    border:1px solid rgba(255,255,255,.14)!important;
+    border-radius:8px!important;
+  }
+  .fts-logo-box img{
+    max-width:180px!important;
+    height:48px!important;
+  }
+}
+
+/* ===== CORREÇÃO DEFINITIVA: produto completo dentro da área útil ===== */
+.fts-card__image{
+  padding:14px!important;
+}
+.fts-card__image-inner{
+  width:100%!important;
+  height:300px!important;
+  min-height:300px!important;
+  aspect-ratio:auto!important;
+  padding:12px!important;
+  background:#fff!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+.fts-card__image-inner img{
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  display:block!important;
+}
+.fts-card:hover .fts-card__image-inner img{
+  transform:scale(1.04)!important;
+}
+@media(max-width:599px){
+  .fts-card__image-inner{
+    height:270px!important;
+    min-height:270px!important;
+  }
+}
+
+/* ===== AJUSTE EXATO DAS LOGOS FORNECIDAS ===== */
+.fts-topo-catalogo__logos{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:12px!important;
+  padding:12px 18px!important;
+}
+.fts-logo-box{
+  height:112px!important;
+  min-height:112px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:18px!important;
+  overflow:hidden!important;
+  background:#fff!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.fts-logo-box img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  background:#fff!important;
+}
+@media(max-width:699px){
+  .fts-topo-catalogo__logos{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px!important;
+    padding:10px!important;
+  }
+  .fts-logo-box{
+    height:92px!important;
+    min-height:92px!important;
+  }
+}
+
+
+/* =========================================================
+   FTS BRASIL — AJUSTE FINAL CONSOLIDADO
+   ========================================================= */
+
+/* Fonte única em todo o catálogo */
+.fts-catalogo-embed,
+.fts-catalogo-embed *,
+.fts-catalogo-embed h1,
+.fts-catalogo-embed h2,
+.fts-catalogo-embed h3,
+.fts-catalogo-embed h4,
+.fts-catalogo-embed h5,
+.fts-catalogo-embed h6,
+.fts-catalogo-embed p,
+.fts-catalogo-embed span,
+.fts-catalogo-embed a,
+.fts-catalogo-embed button,
+.fts-catalogo-embed input,
+.fts-catalogo-embed select{
+  font-family:'Space Grotesk',system-ui,sans-serif!important;
+}
+
+/* Movimento dos cards */
+.fts-card{
+  transition:transform .28s ease,box-shadow .28s ease!important;
+}
+.fts-card:hover{
+  transform:translateY(-6px)!important;
+  box-shadow:0 4px 10px rgba(15,23,42,.06),
+             0 20px 44px rgba(15,23,42,.12)!important;
+}
+
+/* Área útil da imagem */
+.fts-card__image{
+  padding:16px!important;
+  background:#fff!important;
+}
+.fts-card__image-inner{
+  width:100%!important;
+  height:320px!important;
+  min-height:320px!important;
+  padding:12px!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+  aspect-ratio:auto!important;
+}
+
+/* Produto inteiro e sem corte */
+.fts-card__image-inner img{
+  display:block!important;
+  width:auto!important;
+  height:auto!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  transform:none!important;
+  transition:none!important;
+}
+.fts-card:hover .fts-card__image-inner img{
+  transform:none!important;
+}
+
+/* Card somente com nome e botão */
+.fts-card__category,
+.fts-card__desc{
+  display:none!important;
+}
+.fts-card__body{
+  padding:4px 22px 22px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:14px!important;
+  flex:1!important;
+  text-align:center!important;
+}
+.fts-card__title{
+  margin:0!important;
+  min-height:52px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:18px!important;
+  line-height:1.28!important;
+  color:#0b1a4a!important;
+}
+.fts-card__btn{
+  width:100%!important;
+  min-height:54px!important;
+  margin-top:auto!important;
+  font-size:15px!important;
+  border-radius:10px!important;
+}
+
+/* Logos do topo: sem traves/divisórias */
+.fts-topo-catalogo__logos{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:12px!important;
+  padding:14px 18px!important;
+  background:rgba(7,66,126,.34)!important;
+}
+.fts-logo-box,
+.fts-logo-box:last-child{
+  height:112px!important;
+  min-height:112px!important;
+  padding:8px!important;
+  border:0!important;
+  border-right:0!important;
+  border-radius:16px!important;
+  background:#fff!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+.fts-logo-box img{
+  display:block!important;
+  width:auto!important;
+  height:auto!important;
+  max-width:96%!important;
+  max-height:94px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#fff!important;
+}
+
+/* Tablet */
+@media(max-width:899px){
+  .fts-card__image-inner{
+    height:290px!important;
+    min-height:290px!important;
+  }
+}
+
+/* Celular */
+@media(max-width:699px){
+  .fts-topo-catalogo__logos{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px!important;
+    padding:10px!important;
+  }
+  .fts-logo-box,
+  .fts-logo-box:last-child{
+    height:92px!important;
+    min-height:92px!important;
+    padding:7px!important;
+  }
+  .fts-logo-box img{
+    max-width:96%!important;
+    max-height:76px!important;
+  }
+}
+@media(max-width:599px){
+  .fts-card__image-inner{
+    height:270px!important;
+    min-height:270px!important;
+  }
+  .fts-card__title{
+    min-height:auto!important;
+    font-size:17px!important;
+  }
+}
+
+/* FTS Brasil — revisão V3: correção de três imagens que ainda estavam cortadas */
+
+
+/* =========================================================
+   FTS BRASIL — V4
+   PADRÃO VISUAL IGUAL AOS EXEMPLOS ENVIADOS PELO CLIENTE
+   Aplicado em todas as imagens dos 70 cards
+   ========================================================= */
+
+/* Card com mesma leitura visual dos exemplos */
+.fts-card{
+  max-width:350px!important;
+  border-radius:18px!important;
+  overflow:hidden!important;
+  background:#fff!important;
+}
+
+/* Área superior da imagem: cria o respiro dos exemplos */
+.fts-card__image{
+  padding:34px 28px 0!important;
+  background:#fff!important;
+}
+
+/* Moldura clara igual aos exemplos */
+.fts-card__image-inner{
+  width:100%!important;
+  height:282px!important;
+  min-height:282px!important;
+  aspect-ratio:auto!important;
+  padding:0!important;
+  background:#fff!important;
+  border:1px solid #edf2f7!important;
+  border-radius:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+
+/* Produto sempre inteiro, centralizado e sem corte */
+.fts-card__image-inner img{
+  display:block!important;
+  width:auto!important;
+  height:auto!important;
+  max-width:92%!important;
+  max-height:92%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  transform:none!important;
+  transition:none!important;
+}
+
+/* Não aplicar zoom na imagem para não cortar o produto */
+.fts-card:hover .fts-card__image-inner img{
+  transform:none!important;
+}
+
+/* Mantém apenas nome + botão, com espaçamento parecido com os exemplos */
+.fts-card__body{
+  padding:34px 22px 22px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:18px!important;
+  flex:1!important;
+  text-align:center!important;
+}
+
+/* Categoria e descrição ficam invisíveis */
+.fts-card__category,
+.fts-card__desc{
+  display:none!important;
+}
+
+/* Nome do produto */
+.fts-card__title{
+  margin:0!important;
+  min-height:46px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-family:'Space Grotesk',system-ui,sans-serif!important;
+  font-size:18px!important;
+  line-height:1.25!important;
+  font-weight:700!important;
+  color:#0b1a4a!important;
+}
+
+/* Botão igual ao padrão aprovado */
+.fts-card__btn{
+  width:100%!important;
+  min-height:54px!important;
+  margin-top:auto!important;
+  border-radius:8px!important;
+  font-family:'Space Grotesk',system-ui,sans-serif!important;
+  font-size:15px!important;
+  font-weight:700!important;
+}
+
+/* Responsivo */
+@media(max-width:899px){
+  .fts-card__image{
+    padding:28px 24px 0!important;
+  }
+  .fts-card__image-inner{
+    height:260px!important;
+    min-height:260px!important;
+  }
+}
+
+@media(max-width:599px){
+  .fts-card__image{
+    padding:24px 20px 0!important;
+  }
+  .fts-card__image-inner{
+    height:235px!important;
+    min-height:235px!important;
+  }
+  .fts-card__body{
+    padding:28px 18px 20px!important;
+    gap:16px!important;
+  }
+  .fts-card__title{
+    min-height:auto!important;
+    font-size:17px!important;
+  }
+}
