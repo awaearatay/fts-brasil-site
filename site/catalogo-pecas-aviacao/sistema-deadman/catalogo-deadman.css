@@ -647,3 +647,7 @@
     font-size:17px!important;
   }
 }
+
+/* Correção Astra: mantém os textos como foram escritos (sem capitalizar) e sem sublinhado nos botões */
+.fts-catalogo-embed h1,.fts-catalogo-embed h3,.fts-catalogo-embed .fts-chip,.fts-catalogo-embed .fts-reset,.fts-catalogo-embed .fts-no-results__reset,.fts-catalogo-embed .fts-topo-catalogo__cta,.fts-catalogo-embed .fts-card__btn,.fts-catalogo-embed .fts-card__title{text-transform:none!important}
+.fts-catalogo-embed a,.fts-catalogo-embed a:hover,.fts-catalogo-embed a:focus,.fts-catalogo-embed .fts-card__btn,.fts-catalogo-embed .fts-topo-catalogo__cta{text-decoration:none!important}
